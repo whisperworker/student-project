@@ -1,4 +1,4 @@
-package com.wnw.studentorder.domain;
+package com.wnw.studentorder.domain.weeding;
 
 public class Address {
 
@@ -8,6 +8,24 @@ public class Address {
     private String apartment;
     private String postCode;
 
+    public Address(String street, String building, String extension, String apartment, String postCode) {
+        this.street = street;
+        this.building = building;
+        this.extension = extension;
+        this.apartment = apartment;
+        this.postCode = postCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                ", extension='" + extension + '\'' +
+                ", apartment='" + apartment + '\'' +
+                ", postCode='" + postCode + '\'' +
+                '}';
+    }
 
     public String getStreet() {
         return street;
