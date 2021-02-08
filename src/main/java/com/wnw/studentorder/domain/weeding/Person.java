@@ -1,27 +1,31 @@
-package com.wnw.studentorder.domain;
+package com.wnw.studentorder.domain.weeding;
 
 import java.time.LocalDate;
 
-public class Person extends Object{
+public abstract class Person{
 
     protected String surname;
     protected String givenName;
     protected String patronymic;
-    private LocalDate dateOfBirth;
-    private Address address;
+    protected LocalDate dateOfBirth;
+    protected Address address;
 
-    public Person(){
-        System.out.println("Person is created");
-    }
-
-    public Person(String surname, String givenName, String patronymic) {
+    public Person(String surname, String givenName, String patronymic, LocalDate dateOfBirth) {
         this.surname = surname;
         this.givenName = givenName;
         this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPersonString(){
-        return surname + " " + givenName + " " + patronymic;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "surname='" + surname + '\'' +
+                ", givenName='" + givenName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address=" + address +
+                '}';
     }
 
     public String getSurname() {
@@ -54,5 +58,13 @@ public class Person extends Object{
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
