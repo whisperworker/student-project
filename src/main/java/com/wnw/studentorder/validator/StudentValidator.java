@@ -1,11 +1,19 @@
 package com.wnw.studentorder.validator;
 
 import com.wnw.studentorder.domain.AnswerStudent;
-import com.wnw.studentorder.domain.StudentOrder;
+import com.wnw.studentorder.domain.weeding.StudentOrder;
 
 public class StudentValidator {
 
-    public String hostName;
+    private String hostName;
+
+    public String getHostName() {
+        return hostName;
+    }
+
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
 
     public AnswerStudent checkStudent(StudentOrder so) {
         System.out.println("Student is checking:" + hostName);
