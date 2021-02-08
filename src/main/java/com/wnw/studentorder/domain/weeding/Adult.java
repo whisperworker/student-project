@@ -1,7 +1,6 @@
-package com.wnw.studentorder.domain;
+package com.wnw.studentorder.domain.weeding;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 public class Adult extends Person{
 
@@ -12,19 +11,20 @@ public class Adult extends Person{
     private String university;
     private String studentId;
 
-    public Adult(){
-        System.out.println("Adult is created");
-    }
-
-    public Adult(String surname, String givenName, String patronymic, String passportSeria, String passportNumber) {
-        super(surname, givenName, patronymic);
-        this.passportSeria = passportSeria;
-        this.passportNumber = passportNumber;
+    public Adult(String surname, String givenName, String patronymic, LocalDate dateOfBirth) {
+        super(surname, givenName, patronymic, dateOfBirth);
     }
 
     @Override
-    public String getPersonString(){
-        return surname + " " + givenName + " " + patronymic + ":" + passportSeria + passportNumber;
+    public String toString() {
+        return "Adult{" +
+                "passportSeria='" + passportSeria + '\'' +
+                ", passportNumber='" + passportNumber + '\'' +
+                ", issueDate=" + issueDate +
+                ", issueDepartment='" + issueDepartment + '\'' +
+                ", university='" + university + '\'' +
+                ", studentId='" + studentId + '\'' +
+                '}';
     }
 
     public String getPassportSeria() {
@@ -57,5 +57,21 @@ public class Adult extends Person{
 
     public void setIssueDepartment(String issueDepartment) {
         this.issueDepartment = issueDepartment;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }
