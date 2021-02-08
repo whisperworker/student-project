@@ -1,11 +1,16 @@
 package com.wnw.studentorder;
 
 import com.wnw.studentorder.domain.*;
+import com.wnw.studentorder.domain.register.AnswerCityRegister;
+import com.wnw.studentorder.domain.weeding.StudentOrder;
 import com.wnw.studentorder.mail.MailSender;
 import com.wnw.studentorder.validator.ChildrenValidator;
 import com.wnw.studentorder.validator.CityRegisterValidator;
 import com.wnw.studentorder.validator.StudentValidator;
 import com.wnw.studentorder.validator.WeedingValidator;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class StudentOrderValidator {
 
@@ -25,26 +30,38 @@ public class StudentOrderValidator {
     }
 
     public static void main(String[] args) {
+
         StudentOrderValidator sov = new StudentOrderValidator();
         sov.checkAll();
     }
 
     public void checkAll(){
+        List<StudentOrder> soList = readStudentOrders();
 
-        StudentOrder so = readStudentOrder();
-
-        AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWeeding wedAnswer = checkWedding(so);
-        AnswerChildren childrenAnswer = checkChildren(so);
-        AnswerStudent studentAnswer = checkStudent(so);
-
-        sendMail(so);
-
+        for(StudentOrder so: soList) {
+            checkOneOrder(so);
+        }
     }
 
-    public StudentOrder readStudentOrder() {
-        StudentOrder so = new StudentOrder();
-        return so;
+    public List<StudentOrder> readStudentOrders() {
+        List<StudentOrder> soList = new LinkedList<>();
+
+        for(int i = 0; i < 5; i++){
+            StudentOrder so = SaveStudentOrder.buildStudentOrder(i);
+            soList.add(so);
+        }
+
+        return soList;
+    }
+
+    public void checkOneOrder(StudentOrder so) {
+
+        AnswerCityRegister cityAnswer = checkCityRegister(so);
+        //AnswerWeeding wedAnswer = checkWedding(so);
+        //AnswerChildren childrenAnswer = checkChildren(so);
+        //AnswerStudent studentAnswer = checkStudent(so);
+
+        //sendMail(so);
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
